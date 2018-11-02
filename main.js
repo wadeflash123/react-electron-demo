@@ -9,15 +9,21 @@ let win
 function createWindow() {
   // 新建窗口。
   win = new BrowserWindow({ width: 900, height: 600 })
-  // 加载应用，electron-quick-start中默认的加载入口。
-  // win.loadURL(url.format({
-  //   pathname: path.join(__dirname, 'index.html'),
-  //   protocol: 'file:',
-  //   slashes: true
-  // }))
+  // homepage
+  // 默认情况下，homepage 是 http://localhost:3000，build 后，
+  // 所有资源文件路径都是 /static，而 Electron 调用的入口是 file :协议，
+  // /static 就会定位到根目录去，所以找不到静态文件。在 package.json 文件中添加 homepage 字段并设置为"."后，
+  // 静态文件的路径就变成了相对路径，就能正确地找到了。
 
-  // 加载应用，适用于 react 项目。
-  win.loadURL('http://localhost:3000/')
+  // 打包时，加载应用，electron-quick-start中默认的加载入口。
+  win.loadURL(url.format({
+    pathname: path.join(__dirname, 'index.html'),
+    protocol: 'file:',
+    slashes: true
+  }))
+
+  // 加载应用，适用于 react 项目未打包时。
+  // win.loadURL('http://localhost:3000/')
 
   // 打开开发者工具，默认不打开。
   win.webContents.openDevTools()

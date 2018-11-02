@@ -14,7 +14,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "electron-start": "electron ."
+    "electron-start": "electron .",
+    "package": "electron-packager build mreapp"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -26,6 +27,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "electron": "^3.0.7"
+    "electron": "^3.0.7",
+    "electron-packager": "^12.2.0"
   }
 }
